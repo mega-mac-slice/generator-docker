@@ -1,7 +1,5 @@
 'use strict';
 const Generator = require('yeoman-generator');
-const chalk = require('chalk');
-const yosay = require('yosay');
 const path = require('path');
 
 module.exports = class extends Generator {
@@ -11,7 +9,10 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'name',
         message: 'Service Name',
-        default: process.cwd().split(path.sep).pop()
+        default: process
+          .cwd()
+          .split(path.sep)
+          .pop()
       },
       {
         type: 'input',
@@ -32,11 +33,9 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    return this.fs.copyTpl(
-      this.templatePath('*'),
-      this.destinationRoot(),
-      {...this.props}
-    );
+    return this.fs.copyTpl(this.templatePath(''), this.destinationRoot(), {
+      ...this.props
+    });
   }
 
   install() {

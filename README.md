@@ -9,7 +9,7 @@ make install
 ## Usage
 - Create Docker Service Stub:
 ```
-yo generator-bms-docker:service
+yo generator-docker:service
 ```
 
 ## Reference

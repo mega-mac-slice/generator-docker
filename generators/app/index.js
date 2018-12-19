@@ -7,7 +7,7 @@ module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
     this.log(
-      yosay(`Welcome to the striking ${chalk.red('generator-bms-docker')} generator!`)
+      yosay(`Welcome to the striking ${chalk.red('generator-docker')} generator!`)
     );
 
     const prompts = [

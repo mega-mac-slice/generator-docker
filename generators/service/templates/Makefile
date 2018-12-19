@@ -2,19 +2,24 @@ IMAGE=<%= image %>
 PORT=<%= port %>
 CONTAINER_ID=$(shell docker container ls | awk '$$2 == "'${IMAGE}'" {print $$1}')
 
+CONTAINER_ID=$(shell docker container ls | awk '$$2 == "'${IMAGE}'" {print $$1}')
+
 container-id:
 	@echo ${CONTAINER_ID}
 
 start:
-	docker run -itd -p ${PORT}:${PORT} ${IMAGE}
+	docker run -itd  \
+	-p ${PORT}:${PORT} \
+	${IMAGE}
 
 stop:
 	docker stop ${CONTAINER_ID}
 
-restart: stop start
+restart:
+	docker restart ${CONTAINER_ID}
 
 remove:
-	docker container rm ${CONTAINER_ID}
+	docker container rm --force ${CONTAINER_ID}
 
 check-running:
 	@if [ -z "${CONTAINER_ID}" ]; then\
@@ -22,4 +27,8 @@ check-running:
     fi \
 
 status:
-	@echo "todo"
+	@if [ -z "${CONTAINER_ID}" ]; then\
+		echo fail; \
+    else \
+    	echo ok; \
+    fi \

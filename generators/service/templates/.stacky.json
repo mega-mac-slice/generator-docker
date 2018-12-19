@@ -1,0 +1,9 @@
+{
+  "name": "<%= name %>",
+  "commands": {
+    "status": "make status",
+    "start": "make check-running",
+    "stop": "make stop"
+  },
+  "stack": []
+}

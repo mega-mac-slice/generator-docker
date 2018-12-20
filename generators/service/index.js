@@ -32,13 +32,19 @@ module.exports = class extends Generator {
     });
   }
 
-  writing() {
+  copyTemplates() {
     return this.fs.copyTpl(this.templatePath(''), this.destinationRoot(), {
       ...this.props
     });
   }
 
-  install() {
-    this.installDependencies();
+  copyDotFileTemplates() {
+    return this.fs.copyTpl(this.templatePath('.*'), this.destinationRoot(), {
+      ...this.props
+    });
   }
+
+  writing() {}
+
+  install() {}
 };
